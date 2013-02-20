@@ -1,0 +1,43 @@
+%h2
+  Coach list
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Picture
+      %th Name
+      %th surname
+      %th Position
+      %th
+  %tbody
+    - for coach in @coaches
+      %tr
+        %td
+          = image_tag(coach.first_image_url)
+        %td
+          = coach.name
+        %td
+          = coach.surname
+        %td
+          = coach.position
+        %td
+          = link_to "Delete", coach_path(coach), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+          |
+          = link_to "Edit", edit_coach_path(coach), :class => "btn btn-primary btn-mini"
+          |
+          =link_to "Show", coach_path(coach), :class => "btn btn-primary btn-mini"
+
+/ = paginate @coachs
+
+- content_for :sidebar do
+  =link_to("+ Add new coach", new_coach_path, :class => "btn btn-large btn-success")
+  %hr
+  = search_form_for @search do |f|
+    .search-form
+      %h5
+        Search:
+      By name:
+      = f.text_field :name_cont
+      By surname:
+      = f.text_field :surname_cont
+      = f.submit "search", :class => "btn btn-primary"

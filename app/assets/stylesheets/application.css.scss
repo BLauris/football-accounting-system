@@ -1,0 +1,130 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require bootstrap_and_overrides
+ */
+
+body{background-image:url('pattern.png');}
+
+.container{
+	margin-left: auto;
+	margin-right: auto;
+	width:960px;
+}
+
+label{
+  margin:0;
+}
+
+.team{
+  float:left;
+}
+
+.information{
+  display: block;
+  float: left;
+  width: 420px;
+}
+
+.image img{
+  display: block;
+  float: left;
+  width:300px;
+  margin-right: 20px;
+}
+
+.statistics{
+  text-align: center;
+  input{
+    text-align: center;
+    margin-left: 10px;
+  }
+}
+
+.sign-out{
+  float: right;
+}
+
+.navbar{margin-top: 20px;}
+
+.remember-me{
+  display: block;
+  float: left;
+  width: 130px;
+}
+.btn-sign-in{
+  margin-top: -5px;
+}
+.form-login{
+  margin-top: 100px;
+}
+
+.files {
+  margin-top:20px;
+  .file {
+    position:relative;
+    width:120px;
+    height:120px;
+    margin:0px 10px 10px 0px;
+    float:left;
+    .close {
+      right: -8px;
+      top: -6px;
+      width:16px;
+      height:16px;
+      position:absolute;
+      opacity: 1;
+      background-image:url('close.png');
+    }
+  }
+}
+.qq-uploader { position:relative; width: 100%;}
+
+.qq-upload-button {
+    display:block; /* or inline-block */
+    width: 140px; padding: 7px 0; text-align:center;
+    background:#c9c9c9; color:#000; border-bottom:1px solid #ddd;
+    border-radius:5px;
+}
+.qq-upload-button-hover {background:#E6E6E6;}
+.qq-upload-button-focus {outline:1px dotted black;}
+
+.qq-upload-drop-area {
+    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
+    background:#FF9797; text-align:center;
+}
+.qq-upload-drop-area span {
+    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+}
+.qq-upload-drop-area-active {background:#FF7171;}
+
+.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
+.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
+.qq-upload-file,
+.qq-upload-spinner,
+.qq-upload-size,
+.qq-upload-cancel,
+.qq-upload-failed-text {
+    margin-right: 7px;
+}
+
+.qq-upload-file {}
+.qq-upload-spinner {
+  display:inline-block;
+  background-image:url('loading.gif');
+  width:15px;
+  height:15px;
+  vertical-align:text-bottom;}
+.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+.qq-upload-failed-text {display:none;}
+.qq-upload-fail .qq-upload-failed-text {display:inline;}

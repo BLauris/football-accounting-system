@@ -1,0 +1,17 @@
+%h1
+	= @tournament.title
+%br
+= @tournament.description
+%hr
+
+%h4 All teams which are playing in this tournament
+-for user in @tournament.users
+	.label	
+		= user.team_name
+
+- content_for :sidebar do
+	= link_to('<i class="icon-trash"></i>  Delete tournament'.html_safe, admin_tournament_path(@tournament), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
+	= link_to('<i class="icon-pencil"></i>  Edit'.html_safe, edit_admin_tournament_path(@tournament), :class => "btn btn-primary")
+	%hr
+	Tournament created at:
+	= @tournament.created_at.strftime("%d.%m.%Y")

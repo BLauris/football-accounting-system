@@ -1,0 +1,43 @@
+%h2
+  Medical & adviser staff list
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Picture
+      %th name
+      %th surname
+      %th Position
+      %th
+  %tbody
+    - for staff in @staffs
+      %tr
+        %td
+          = image_tag(staff.first_image_url)
+        %td
+          = staff.name
+        %td
+          = staff.surname
+        %td
+          = staff.position
+        %td
+          = link_to "Delete", staff_path(staff), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+          |
+          = link_to "Edit", edit_staff_path(staff), :class => "btn btn-primary btn-mini"
+          |
+          =link_to "Show", staff_path(staff), :class => "btn btn-primary btn-mini"
+
+/ = paginate @staffs
+
+- content_for :sidebar do
+  =link_to("+ Add new", new_staff_path, :class => "btn btn-large btn-success")
+  %hr
+/   = search_form_for @search do |f|
+/     .search-form
+/       %h5
+/         Search:
+/       By name:
+/       = f.text_field :name_cont
+/       By surname:
+/       = f.text_field :surname_cont
+/       = f.submit "search", :class => "btn btn-primary"

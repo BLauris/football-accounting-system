@@ -1,0 +1,42 @@
+.image
+	= image_tag @coach.assets.first.file(:large)
+
+%h3 
+	= @coach.full_name
+%hr
+Date of birth:
+= @coach.date_of_birth
+
+%br
+Citizenship:
+= @coach.citizenship
+
+%br
+Position:
+= @coach.position
+
+%hr
+%h4 Statistics
+Games won:
+= @coach.games_won
+%br
+Games lost:
+= @coach.games_lost
+%br
+Drawn games:
+= @coach.drawn_games
+%br
+Total games:
+= @coach.total_games
+%hr
+%h4 Additional description
+= @coach.description
+
+- content_for :sidebar do
+	= link_to('<i class="icon-trash"></i>  Delete coach'.html_safe, coach_path(@coach), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
+	=link_to('<i class="icon-pencil"></i>  Edit'.html_safe, coach_path(@coach), :class => "btn btn-primary")
+	%hr
+	At
+	= current_user.team_name
+	sinc:
+	= @coach.created_at.strftime("%d.%m.%Y")

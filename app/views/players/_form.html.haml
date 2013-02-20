@@ -1,0 +1,67 @@
+.form-horizontal.form-actions  
+  = form_for @player do |f|
+    %h4
+      Main information
+    .control-group
+      = f.label "Name: ", :class => "control-label"
+      .controls  
+        = f.text_field :name, :class => "input-xlarge"
+    .control-group
+      = f.label "Surname: ", :class => "control-label"
+      .controls  
+        = f.text_field :surname, :class => "input-xlarge"
+    .control-group
+      = f.label "Date of birth: ", :class => "control-label"
+      .controls
+        = f.date_select :date_of_birth, :start_year => 1900, :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }
+    .control-group
+      = f.label "Citizenship: ", :class => "control-label"
+      .controls  
+        = f.text_field :citizenship, :class => "input-xlarge"
+    .control-group
+      = f.label "Description: ", :class => "control-label"
+      .controls  
+        = f.text_area :description, :class => "input-xxlarge" 
+    %hr
+    %h4
+      Additional information
+    .control-group
+      = f.label "Position:", :class => "control-label"
+      .controls
+        = f.select( "position", player_position, {:default => "not specified", :allow_blank => false})   
+    .control-group
+      = f.label "Number: ", :class => "control-label"
+      .controls  
+        = f.text_field :number, :class => "input-xlarge"  
+    .control-group
+      = f.label "Height(cm):", :class => "control-label"
+      .controls
+        = f.text_field :height, :class => "input-xlarge"  
+    .control-group
+      = f.label "Weight(kg): ", :class => "control-label"
+      .controls  
+        = f.text_field :weight, :class => "input-xlarge"  
+    %hr
+    %h4
+      Statistics
+    .span7.offset1.control-group.statistics
+      .span2
+        = f.label "Red cards"
+        = f.text_field :red_card, :class => "input-small"
+      .span2
+        = f.label "Yellow cards"
+        = f.text_field :yellow_card, :class => "input-small"
+      .span2
+        = f.label "Goals scored"
+        = f.text_field :goals_scored, :class => "input-small"
+    %hr
+    %h4 
+      Picture
+    #file-uploader{"data-assetable-id" => @player.id,"data-assetable-type" => "Player", "data-upload-url" => assets_url}
+      %noscript
+      %p Please enable JavaScript to use file uploader.
+    = render :partial => "assets/assets", :locals => {:assets => @player.assets}
+
+    .form-actions
+      = f.submit("Save", :class => "btn btn-primary")
+      = link_to "Cancel", :coaches, :class => "btn"

@@ -1,0 +1,9 @@
+.row
+  .errors
+  .files.twelve.columns
+    - assets.each do |asset|
+      = render :partial => "assets/asset", :locals => {:asset => asset}
+    - if params[:asset_ids]
+      - params[:asset_ids].each do |asset_id|
+        = render :partial => "assets/asset", :locals => {:asset => Asset.find(asset_id) }
+  %br

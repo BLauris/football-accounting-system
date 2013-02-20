@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %title FootballAccountingSystem
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .row
+      .container
+        - if user_signed_in?
+          .span11  
+            .navbar.navbar-inner
+              %a.brand{:href => admin_users_path} 
+                Administrator
+              %ul.nav
+                %li
+                  = link_to "All teams", [:admin, :users]
+                %li
+                  = link_to "Tournaments", [:admin, :tournaments]
+              .sign-out
+                = link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-inverse"
+          .span8
+            .well
+              / = render :partial => "shared/flash_messages"
+              = yield
+          .span3
+            .well
+              = yield(:sidebar)
+        - else
+          .span6.offset3
+            .well.form-login
+              = yield

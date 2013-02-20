@@ -1,0 +1,8 @@
+.file
+  =link_to '', asset_path(asset.id), :class => "close"
+  -if asset.file_content_type == "image/jpeg" || asset.file_content_type == "image/png"
+    = image_tag(asset.file(:thumb))
+  -else
+    = image_tag("pdf_icon.png")
+    = asset.file_file_name
+  = hidden_field_tag "asset_ids[]", asset.id

@@ -1,0 +1,46 @@
+%h2
+  Players list
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Picture
+      %th Full name
+      %th Height
+      %th Weight(kg)
+      %th Position
+      %th
+  %tbody
+    - for player in @players
+      %tr
+        %td
+          = image_tag(player.first_image_url)
+        %td
+          = player.full_name
+        %td
+          = player.height
+        %td
+          = player.weight
+        %td
+          = player.position
+        %td
+          = link_to "Delete", player_path(player), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+          |
+          = link_to "Edit", edit_player_path(player), :class => "btn btn-primary btn-mini"
+          |
+          =link_to "Show", player_path(player), :class => "btn btn-primary btn-mini"
+
+/ = paginate @players
+
+- content_for :sidebar do
+  =link_to("+ Add new player", new_player_path, :class => "btn btn-large btn-success")
+  %hr
+  = search_form_for @search do |f|
+    .search-form
+      %h5
+        Search:
+      By name:
+      = f.text_field :name_cont
+      By surname:
+      = f.text_field :surname_cont
+      = f.submit "search", :class => "btn btn-primary"

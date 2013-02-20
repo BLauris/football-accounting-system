@@ -1,0 +1,6 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    %div{:class => "alert alert-#{name}"}
+      = content_tag(:button, "x" , :class => "close-notice")
+      = msg
+      .clear

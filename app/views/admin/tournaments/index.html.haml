@@ -1,0 +1,22 @@
+%h2
+  Tournament list
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Tournament title
+      %th
+  %tbody
+    - for tournament in @tournaments
+      %tr
+        %td
+          = tournament.title
+        %td
+          = link_to "Delete", admin_tournament_path(tournament), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+          |
+          = link_to "Edit", edit_admin_tournament_path(tournament), :class => "btn btn-primary btn-mini"
+          |
+          =link_to "Show", admin_tournament_path(tournament), :class => "btn btn-primary btn-mini"
+
+- content_for :sidebar do
+  =link_to("+ Add new tournament", new_admin_tournament_path, :class => "btn btn-large btn-success")

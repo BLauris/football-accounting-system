@@ -1,0 +1,10 @@
+%h2
+	Edit player
+
+= render :partial => "form"
+
+- content_for :sidebar do
+	= link_to('<i class="icon-trash"></i>  Delete coach'.html_safe, player_path(@player), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-large btn-danger") 
+	%hr
+	Last time edited:
+	= @player.updated_at.strftime("%d.%m.%Y")

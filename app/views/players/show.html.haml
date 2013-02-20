@@ -1,0 +1,50 @@
+.image
+	= image_tag @player.assets.first.file(:large)
+
+%h3 
+	= @player.full_name
+
+Date of birth:
+= @player.date_of_birth
+%br
+Citizenship:
+= @player.citizenship
+%br
+Position:
+= @player.position
+%br
+Number:
+= @player.number
+
+%hr
+%h4 Physical parameters
+Height:
+= @player.height
+%br
+Weight:
+= @player.weight
+%hr
+%h4 Statistics
+Red cards
+= @player.red_card
+%br
+Yellow  cards:
+= @player.yellow_card
+%br
+Goals scored:
+= @player.goals_scored
+%br
+Minutes played
+= @player.minutes_played
+%hr
+%h4 Additional description
+= @player.description
+
+- content_for :sidebar do
+	= link_to('<i class="icon-trash"></i>  Delete player'.html_safe, player_path(@player), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
+	=link_to('<i class="icon-pencil"></i>  Edit'.html_safe, player_path(@player), :class => "btn btn-primary")
+	%hr
+	At
+	= current_user.team_name
+	sinc:
+	= @player.created_at.strftime("%d.%m.%Y")

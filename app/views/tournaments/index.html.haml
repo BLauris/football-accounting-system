@@ -1,0 +1,14 @@
+%h2 
+	My tournaments list
+%table.table.table-hover
+	%thead
+		%tr
+			%th Tournament name
+			%th
+	%tbody
+		- for tournament in @tournaments
+			%tr
+				%td
+					= tournament.title
+				%td
+					= link_to("show", tournament_path(tournament), :class => "btn btn-primary")

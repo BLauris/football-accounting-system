@@ -1,0 +1,10 @@
+%h2
+	Edit
+
+= render :partial => "form"
+
+- content_for :sidebar do
+	= link_to('<i class="icon-trash"></i>  Delete'.html_safe, staff_path(@staff), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-large btn-danger") 
+	%hr
+	Last time edited:
+	= @staff.updated_at.strftime("%d.%m.%Y")

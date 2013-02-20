@@ -1,0 +1,19 @@
+%h2 Sign in
+.form-horizontal.form-actions  
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .control-group
+      = f.label "E-mail:", :class => "control-label"
+      .controls  
+        = f.email_field :email, :autofocus => true
+    .control-group
+      = f.label "Password:", :class => "control-label"
+      .controls  
+        = f.password_field :password
+    - if devise_mapping.rememberable?  
+      .control-group
+        .controls
+          %label.checkbox
+            = f.check_box :remember_me
+            = f.label "Remember me", :class => "remember-me"
+            = f.submit "Sign in", :class => "btn btn-primary btn-sign-in"
+= render "devise/shared/links"

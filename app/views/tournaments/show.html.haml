@@ -1,0 +1,10 @@
+%h1
+	= @tournament.title
+%br
+= @tournament.description
+%hr
+
+%h4 All teams which are playing in this tournament
+-for user in @tournament.users
+	.label	
+		= user.team_name
