@@ -15,8 +15,6 @@
 //= require twitter/bootstrap
 //= require file_upload/fileuploader
 //= require file_upload/picture_upload
+//= require flash_notice.js.coffee
 //= require_tree .
 
-$(".close-notice").on ("click", function(){
-  $(this).parent().slideUp();
-})

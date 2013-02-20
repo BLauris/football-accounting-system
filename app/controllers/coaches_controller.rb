@@ -19,7 +19,7 @@ class CoachesController < ApplicationController
     @coach = Coach.new(params[:coach])
     @coach.user_id = current_user.id
     if @coach.save
-      flash[:notice] = "Created"
+      flash[:notice] = "Successfully created"
       redirect_to :action => "index"
     else
       render :action => "new"
@@ -39,7 +39,7 @@ class CoachesController < ApplicationController
       if request.xhr?
         render :text => {succsess:true}.to_json
       else
-        flash[:notice] = "Updated"
+        flash[:notice] = "Successfully updated"
         redirect_to :action => "index"
       end
     else
@@ -49,7 +49,7 @@ class CoachesController < ApplicationController
 
   def destroy
     if Coach.find(params[:id]).destroy
-      flash[:notice] = "Deleted"
+      flash[:notice] = "Successfully deleted"
       redirect_to :action => "index"
     end
   end

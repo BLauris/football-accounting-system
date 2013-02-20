@@ -2,7 +2,6 @@ class TournamentsController < ApplicationController
 
 	def index
 		@tournaments = current_user.tournaments
-
 	end
 
 	def show

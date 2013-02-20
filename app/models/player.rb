@@ -18,6 +18,14 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def first_image_large
+    if assets.first
+      assets.first.file(:large)
+    else
+      "no_img_large.png"
+    end
+  end
+
   def full_name
     return name + " " + surname
   end

@@ -1,0 +1,26 @@
+.show
+	.image
+		= image_tag @staff.first_image_large
+
+	%h3 
+		= @staff.full_name
+	%hr
+	Date of birth:
+	= @staff.date_of_birth
+
+	%br
+	Citizenship:
+	= @staff.citizenship
+
+	%br
+	Position:
+	= @staff.position
+
+- content_for :sidebar do
+	= link_to('<i class="icon-trash"></i>  Delete staff'.html_safe, staff_path(@staff), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
+	=link_to('<i class="icon-pencil"></i>  Edit'.html_safe, staff_path(@staff), :class => "btn btn-primary")
+	%hr
+	At
+	= current_user.team_name
+	sinc:
+	= @staff.created_at.strftime("%d.%m.%Y")

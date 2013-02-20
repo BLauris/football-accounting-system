@@ -65,3 +65,9 @@
     .form-actions
       = f.submit("Save", :class => "btn btn-primary")
       = link_to "Cancel", :coaches, :class => "btn"
+
+- content_for :sidebar do
+  = link_to('<i class="icon-trash"></i>  Delete'.html_safe, admin_player_path(@player), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-large btn-danger") 
+  %hr
+  Last time edited:
+  = @player.updated_at.strftime("%d.%m.%Y")

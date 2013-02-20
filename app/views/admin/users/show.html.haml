@@ -2,91 +2,23 @@
 	= @user.team_name
 
 %hr
-%h4
-	Coaching staff
-%table.table.table-hover
-	%thead
-		%tr
-			%th Picture
-			%th Name
-			%th Surname
-			%th Position
-			%th
-	%tbody
-		- for user in @user.coaches
-			%tr
-				%td
-					= image_tag(user.first_image_url)
-				%td
-					= user.name
-				%td
-					= user.surname
-				%td
-					= user.position
-				%td
-					= link_to "Delete", admin_user_path(user), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
-					|
-					= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-primary btn-mini"
-					|
-					=link_to "Show", admin_user_path(user), :class => "btn btn-primary btn-mini"
+
+-if @user.coaches.present?
+	= render :partial => "admin/coaches/coach"
 
 %hr
-%h4
-	Team players
-%table.table.table-hover
-	%thead
-		%tr
-			%th Picture
-			%th Full name
-			%th Heigt
-			%th Weight
-			%th Position
-			%th
-	%tbody
-		- for user in @user.players
-			%tr
-				%td
-					= image_tag(user.first_image_url)
-				%td
-					= user.full_name
-				%td
-					= user.height
-				%td
-					= user.weight
-				%td
-					- user.position
-				%td
-					= link_to "Delete", admin_user_path(user), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
-					|
-					= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-primary btn-mini"
-					|
-					= link_to "Show", admin_player_path, :class => "btn btn-primary btn-mini"
+
+-if @user.players.present?
+	= render :partial => "admin/players/player"
 
 %hr
-%h4
-	Team medical & adviser staff list
-%table.table.table-hover
-	%thead
-		%tr
-			%th Picture
-			%th Name
-			%th Surname
-			%th Position
-			%th
-	%tbody
-		- for user in @user.players
-			%tr
-				%td
-					= image_tag(user.first_image_url)
-				%td
-					= user.name
-				%td
-					= user.surname
-				%td
-					- user.position
-				%td
-					= link_to "Delete", admin_user_path(user), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
-					|
-					= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-primary btn-mini"
-					|
-					=link_to "Show", admin_user_path(user), :class => "btn btn-primary btn-mini"
+
+-if @user.staffs.present?
+	= render :partial => "admin/staffs/staff"
+
+- content_for :sidebar do
+	= link_to('<i class="icon-trash"></i>  Delete team'.html_safe, admin_user_path(@user), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
+	= link_to('<i class="icon-pencil"></i>  Edit'.html_safe, edit_admin_user_path(@user), :class => "btn btn-primary")
+	%hr
+	User registered on:
+	= @user.created_at.strftime("%d.%m.%Y")

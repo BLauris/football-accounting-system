@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   ROLES = [["Administrator", ADMIN],["User", USER]]
 
-  after_save :setup_role
+  after_create :set_default_role
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :team_name, :tournament_ids, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :team_name, :tournament_ids
   # attr_accessible :title, :body
 
   has_many :coaches
@@ -41,8 +41,12 @@ class User < ActiveRecord::Base
     end
   end  
 
-  def setup_role 
-    self.role == USER
+    before_create :set_default_role
+
+  private
+
+  def set_default_role
+    self.role = 2
   end
 
 end

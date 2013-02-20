@@ -1,19 +1,19 @@
-class Admin::PlayersController < Admin::AdministratorController
+class Admin::CoachesController < Admin::AdministratorController
 
 	def show
-		@player = Player.find(params[:id])
+		@coach = Coach.find(params[:id])
 	end
 
 	def edit
-    @player = Player.find(params[:id])
+    @coach = Coach.find(params[:id])
     if request.xhr?
-      render :text =>  @player.to_json
+      render :text =>  @coach.to_json
     end
   end
 
   def update
-    @player = Player.find(params[:id])
-    if @player.update_attributes(params[:player])
+    @coach = Coach.find(params[:id])
+    if @coach.update_attributes(params[:coach])
       if request.xhr?
         render :text => {succsess:true}.to_json
       else
@@ -26,7 +26,7 @@ class Admin::PlayersController < Admin::AdministratorController
   end
 
   def destroy
-    if Player.find(params[:id]).destroy
+    if Coach.find(params[:id]).destroy
       flash[:notice] = "Successfully deleted"
       redirect_to admin_tournaments_path
     end

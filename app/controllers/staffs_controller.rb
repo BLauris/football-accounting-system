@@ -19,7 +19,7 @@ class StaffsController < ApplicationController
     @staff = Staff.new(params[:staff])
     @staff.user_id = current_user.id
     if @staff.save
-      flash[:notice] = "Created"
+      flash[:notice] = "Successfully created"
       redirect_to :action => "index"
     else
       render :action => "new"
@@ -39,7 +39,7 @@ class StaffsController < ApplicationController
       if request.xhr?
         render :text => {succsess:true}.to_json
       else
-        flash[:notice] = "Updated"
+        flash[:notice] = "Successfully updated"
         redirect_to :action => "index"
       end
     else
@@ -49,7 +49,7 @@ class StaffsController < ApplicationController
 
   def destroy
     if Staff.find(params[:id]).destroy
-      flash[:notice] = "Deleted"
+      flash[:notice] = "Successfully Deleted"
       redirect_to :action => "index"
     end
   end

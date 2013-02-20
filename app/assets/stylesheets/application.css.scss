@@ -21,6 +21,8 @@ body{background-image:url('pattern.png');}
 	width:960px;
 }
 
+.show{min-height: 400px;}
+
 label{
   margin:0;
 }
@@ -35,7 +37,7 @@ label{
   width: 420px;
 }
 
-.image img{
+.image {
   display: block;
   float: left;
   width:300px;
@@ -128,3 +130,65 @@ label{
 
 .qq-upload-failed-text {display:none;}
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
+
+/* FLASH MESSAGES */
+.flash-messages {
+  background-color:#fff;
+  margin-left:0px;
+  margin-bottom:none;
+}
+.alert {
+  font-weight:normal;
+}
+.alert-message{
+  background-color:#c2987f;
+  color:#fff;
+  border: 1px solid #c2987f;
+}
+.alert-error{
+  background-color:#951c33;
+  color:#fff;
+}
+.alert-info{
+  color: #468847;
+  background-color: #DFF0D8;
+  border-color: #D6E9C6;
+}
+.alert .close-notice {
+position: relative;
+top: -2px;
+right: -21px;
+line-height: 20px;
+}
+.close-notice:hover {
+color: black;
+text-decoration: none;
+cursor: pointer;
+opacity: 0.4;
+filter: alpha(opacity=40);
+}
+button.close-notice {
+padding: 0;
+cursor: pointer;
+background: transparent;
+border: 0;
+-webkit-appearance: none;
+}
+.close-notice {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: black;
+  text-shadow: 0 1px 0 white;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.edit-position{
+width:10;
+float:left;
+}
+.control-label{
+text-align: left !important;
+}
+/* END OF FLASH MESSAGES */

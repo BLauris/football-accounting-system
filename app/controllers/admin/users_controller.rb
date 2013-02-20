@@ -6,20 +6,9 @@ class Admin::UsersController < Admin::AdministratorController
 
   def show
     @user = User.find(params[:id])
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "Created"
-      redirect_to :action => "index"
-    else
-      render :action => "new"
-    end
+    @coach = Coach.all
+    @staff = Staff.all
+    @player = Player.all
   end
 
   def edit
@@ -35,7 +24,7 @@ class Admin::UsersController < Admin::AdministratorController
       if request.xhr?
         render :text => {succsess:true}.to_json
       else
-        flash[:notice] = "Updated"
+        flash[:notice] = "Successfully updated"
         redirect_to :action => "index"
       end
     else
@@ -45,7 +34,7 @@ class Admin::UsersController < Admin::AdministratorController
 
   def destroy
     if User.find(params[:id]).destroy
-      flash[:notice] = "Deleted"
+      flash[:notice] = "Successfully deleted"
       redirect_to :action => "index"
     end
   end

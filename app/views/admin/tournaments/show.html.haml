@@ -5,9 +5,8 @@
 %hr
 
 %h4 All teams which are playing in this tournament
--for user in @tournament.users
-	.label	
-		= user.team_name
+-for user in @tournament.users	
+	= link_to(user.team_name, admin_user_path(user), :class => "btn btn-info btn-large")
 
 - content_for :sidebar do
 	= link_to('<i class="icon-trash"></i>  Delete tournament'.html_safe, admin_tournament_path(@tournament), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 

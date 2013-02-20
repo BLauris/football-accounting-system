@@ -1,4 +1,4 @@
-.show	
+.show
 	.image
 		= image_tag @coach.first_image_large
 
@@ -34,10 +34,9 @@
 	%h4 Additional description
 	= @coach.description
 
-
 - content_for :sidebar do
-	= link_to('<i class="icon-trash"></i>  Delete coach'.html_safe, coach_path(@coach), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
-	=link_to('<i class="icon-pencil"></i>  Edit'.html_safe, coach_path(@coach), :class => "btn btn-primary")
+	= link_to('<i class="icon-trash"></i>  Delete coach'.html_safe, admin_coach_path(@coach), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
+	=link_to('<i class="icon-pencil"></i>  Edit'.html_safe, edit_admin_coach_path(@coach), :class => "btn btn-primary")
 	%hr
 	At
 	= current_user.team_name

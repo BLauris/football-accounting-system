@@ -1,0 +1,30 @@
+%h4
+	Team players
+%table.table.table-hover
+	%thead
+		%tr
+			%th Picture
+			%th Full name
+			%th Heigt
+			%th Weight
+			%th Position
+			%th
+	%tbody
+		- for user in @user.players
+			%tr
+				%td
+					= image_tag(user.first_image_url)
+				%td
+					= user.full_name
+				%td
+					= user.height
+				%td
+					= user.weight
+				%td
+					- user.position
+				%td
+					= link_to "Delete", admin_player_path(@player), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+					|
+					= link_to "Edit", edit_admin_player_path(@player), :class => "btn btn-primary btn-mini"
+					|
+					= link_to "Show", admin_player_path(@player), :class => "btn btn-primary btn-mini"

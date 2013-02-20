@@ -15,7 +15,7 @@ class Admin::TournamentsController < Admin::AdministratorController
   def create
     @tournament = Tournament.new(params[:tournament])
     if @tournament.save
-      flash[:notice] = "created"
+      flash[:notice] = "Successfully created"
       redirect_to admin_tournaments_path
     else
       render :action => 'new'
@@ -35,6 +35,7 @@ class Admin::TournamentsController < Admin::AdministratorController
       if request.xhr?
         render :text => {succsess:true}.to_json
       else
+        flash[:notice] = "Successfully updated"
         redirect_to admin_tournaments_path
       end
     else
@@ -44,7 +45,7 @@ class Admin::TournamentsController < Admin::AdministratorController
 
   def destroy
     if Tournament.find(params[:id]).destroy
-      flash[:notice] = "deleted"
+      flash[:notice] = "Successfully deleted"
       redirect_to admin_tournaments_path
     end
   end

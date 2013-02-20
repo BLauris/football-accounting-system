@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
 	def index
     @search = Player.search(params[:q])
-    @players = @search.result
+    @players = @search.result.where(:user_id => current_user.id)
   end
 
   def show
@@ -19,7 +19,7 @@ class PlayersController < ApplicationController
     @player = Player.new(params[:player])
     @player.user_id = current_user.id
     if @player.save
-      flash[:notice] = "Created"
+      flash[:notice] = "Successfully created"
       redirect_to :action => "index"
     else
       render :action => "new"
@@ -39,7 +39,7 @@ class PlayersController < ApplicationController
       if request.xhr?
         render :text => {succsess:true}.to_json
       else
-        flash[:notice] = "Updated"
+        flash[:notice] = "Successfully updated"
         redirect_to :action => "index"
       end
     else
@@ -49,7 +49,7 @@ class PlayersController < ApplicationController
 
   def destroy
     if Player.find(params[:id]).destroy
-      flash[:notice] = "Deleted"
+      flash[:notice] = "Successfully deleted"
       redirect_to :action => "index"
     end
   end
