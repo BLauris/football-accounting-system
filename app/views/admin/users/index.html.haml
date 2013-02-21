@@ -21,17 +21,13 @@
           |
           =link_to "Show", admin_user_path(user), :class => "btn btn-primary btn-mini"
 
-/ = paginate @useres
-
 - content_for :sidebar do
-  =link_to("+ Add new team", new_admin_user_path, :class => "btn btn-large btn-success")
-  %hr
-/   = search_form_for @search do |f|
-/     .search-form
-/       %h5
-/         Search:
-/       By name:
-/       = f.text_field :name_cont
-/       By surname:
-/       = f.text_field :surname_cont
-/       = f.submit "search", :class => "btn btn-primary"
+  = search_form_for [:admin, @search] do |f|
+    .search-form
+      %h5
+        Search:
+      By team name:
+      = f.text_field :team_name_cont
+      By e-mail:
+      = f.text_field :email_cont
+      = f.submit "search", :class => "btn btn-primary"

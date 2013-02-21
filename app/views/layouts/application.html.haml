@@ -26,7 +26,7 @@
                 = link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-inverse"
           .span8
             .well
-              / = render :partial => "shared/flash_messages"
+              = render :partial => "shared/flash_messages"
               = yield
           .span3
             .well

@@ -1,5 +1,7 @@
 class StaffsController < ApplicationController
 
+  load_and_authorize_resource
+
   after_filter :save_assets, :only => [:create]
 
 	def index

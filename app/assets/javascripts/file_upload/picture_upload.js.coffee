@@ -2,7 +2,7 @@ createUploader = ->
   params =
     authenticity_token: $("meta[name='csrf-token']").attr("content")
     multipart: true
-  
+
   params.assetable_id = $("#file-uploader").data("assetable-id") if $("#file-uploader").data("assetable-id")
   params.assetable_type = $("#file-uploader").data("assetable-type") if $("#file-uploader").data("assetable-type")
   params.first_page_image = true if $("#file-uploader").data("first-page-images")
@@ -19,10 +19,11 @@ $(window).load ->
   createUploader()
 
 $ ->
-  $(".close").live "click", ->
+  $(".close").on "click", ->
     $.ajax
-      type: "POST"
       url: @href
+      type: "post"
+      dataType: "json"
       data:
         _method: "delete"
         authenticity_token: $("meta[name='csrf-token']").attr("content")

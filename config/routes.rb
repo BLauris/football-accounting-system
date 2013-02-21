@@ -18,6 +18,7 @@ FootballAccountingSystem::Application.routes.draw do
   resources :players
   resources :staffs
   resources :tournaments
+  resources :users
 
   namespace :admin do
     root :to => 'users#index'

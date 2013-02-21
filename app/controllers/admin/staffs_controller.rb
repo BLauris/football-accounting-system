@@ -1,5 +1,7 @@
 class Admin::StaffsController < Admin::AdministratorController
 
+  after_filter :save_assets, :only => [:create]
+
 	def show
 		@staff = Staff.find(params[:id])
 	end
@@ -29,6 +31,14 @@ class Admin::StaffsController < Admin::AdministratorController
     if Staff.find(params[:id]).destroy
       flash[:notice] = "Successfully deleted"
       redirect_to admin_tournaments_path
+    end
+  end
+
+  private
+
+  def save_assets
+    if @staff.id
+      Asset.save_assets_for("Staff", @staff.id, params[:asset_ids]) 
     end
   end
 

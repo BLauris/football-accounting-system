@@ -1,15 +1,9 @@
-class Admin::UsersController < Admin::AdministratorController
-  
-	def index
-    @search = User.search(params[:q])
-    @users = @search.result.where(:role => 2)
-  end
+class UsersController < ApplicationController
+
+  load_and_authorize_resource
 
   def show
     @user = User.find(params[:id])
-    @coach = Coach.all
-    @staff = Staff.all
-    @player = Player.all
   end
 
   def edit
@@ -26,7 +20,7 @@ class Admin::UsersController < Admin::AdministratorController
         render :text => {succsess:true}.to_json
       else
         flash[:notice] = "Successfully updated"
-        redirect_to :action => "index"
+        redirect_to :action => root_url
       end
     else
       render :action => "new"
@@ -36,7 +30,7 @@ class Admin::UsersController < Admin::AdministratorController
   def destroy
     if User.find(params[:id]).destroy
       flash[:notice] = "Successfully deleted"
-      redirect_to :action => "index"
+      redirect_to root_url
     end
   end
 

@@ -7,17 +7,6 @@ gem 'rails', '3.2.12'
 
 gem 'pg'
 
-group :test,:development do
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'factory_girl'
-  gem 'database_cleaner'
-  gem 'simplecov'
-  gem 'mailcatcher'
-end
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

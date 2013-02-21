@@ -27,8 +27,6 @@
           |
           =link_to "Show", staff_path(staff), :class => "btn btn-primary btn-mini"
 
-/ = paginate @staffs
-
 - content_for :sidebar do
   =link_to("+ Add new", new_staff_path, :class => "btn btn-large btn-success")
   %hr

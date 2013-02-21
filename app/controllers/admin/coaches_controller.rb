@@ -1,5 +1,7 @@
 class Admin::CoachesController < Admin::AdministratorController
 
+  after_filter :save_assets, :only => [:create]
+
 	def show
 		@coach = Coach.find(params[:id])
 	end
@@ -29,6 +31,14 @@ class Admin::CoachesController < Admin::AdministratorController
     if Coach.find(params[:id]).destroy
       flash[:notice] = "Successfully deleted"
       redirect_to admin_tournaments_path
+    end
+  end
+
+  private
+
+  def save_assets
+    if @staff.id
+      Asset.save_assets_for("Coach", @coach.id, params[:asset_ids]) 
     end
   end
 
