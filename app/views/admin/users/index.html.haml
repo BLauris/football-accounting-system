@@ -21,13 +21,13 @@
           |
           =link_to "Show", admin_user_path(user), :class => "btn btn-primary btn-mini"
 
-- content_for :sidebar do
-  = search_form_for [:admin, @search] do |f|
-    .search-form
-      %h5
-        Search:
-      By team name:
-      = f.text_field :team_name_cont
-      By e-mail:
-      = f.text_field :email_cont
-      = f.submit "search", :class => "btn btn-primary"
+/ - content_for :sidebar do
+/   = search_form_for [:admin, @search] do |f|
+/     .search-form
+/       %h5
+/         Search:
+/       By team name:
+/       = f.text_field :team_name_cont
+/       By e-mail:
+/       = f.text_field :email_cont
+/       = f.submit "search", :class => "btn btn-primary"

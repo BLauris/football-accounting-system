@@ -5,8 +5,9 @@ class PlayersController < ApplicationController
   after_filter :save_assets, :only => [:create]
 
 	def index
-    @search = Player.search(params[:q])
-    @players = @search.result.where(:user_id => current_user.id)
+    @players = Player.where(:user_id => current_user.id)
+    # @search = Player.search(params[:q])
+    # @players = @search.result.where(:user_id => current_user.id)
   end
 
   def show

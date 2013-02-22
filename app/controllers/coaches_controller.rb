@@ -5,8 +5,10 @@ class CoachesController < ApplicationController
   after_filter :save_assets, :only => [:create]
 
 	def index
-    @search = Coach.search(params[:q])
-    @coaches = @search.result.where(:user_id => current_user.id)
+    @coaches = Coach.where(:user_id => current_user.id)
+
+    # @search = Coach.search(params[:q])
+    # @coaches = @search.result.where(:user_id => current_user.id)
   end
 
   def show

@@ -5,8 +5,9 @@ class StaffsController < ApplicationController
   after_filter :save_assets, :only => [:create]
 
 	def index
-    @search = Staff.search(params[:q])
-    @staffs = @search.result.where(:user_id => current_user.id)
+    @staffs = Staff.where(:user_id => current_user.id)
+    # @search = Staff.search(params[:q])
+    # @staffs = @search.result.where(:user_id => current_user.id)
   end
 
   def show

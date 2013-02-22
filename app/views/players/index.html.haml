@@ -32,13 +32,13 @@
 
 - content_for :sidebar do
   =link_to("+ Add new player", new_player_path, :class => "btn btn-large btn-success")
-  %hr
-  = search_form_for @search do |f|
-    .search-form
-      %h5
-        Search:
-      By name:
-      = f.text_field :name_cont
-      By surname:
-      = f.text_field :surname_cont
-      = f.submit "search", :class => "btn btn-primary"
+  / %hr
+  / = search_form_for @search do |f|
+  /   .search-form
+  /     %h5
+  /       Search:
+  /     By name:
+  /     = f.text_field :name_cont
+  /     By surname:
+  /     = f.text_field :surname_cont
+  /     = f.submit "search", :class => "btn btn-primary"
