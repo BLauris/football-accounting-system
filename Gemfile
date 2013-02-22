@@ -20,6 +20,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'less-rails'
 gem 'jquery-rails'
 gem 'unicorn'
 gem 'haml'
