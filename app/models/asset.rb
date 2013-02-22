@@ -1,4 +1,3 @@
-#encoding: utf-8
 class Asset < ActiveRecord::Base
   attr_accessible :file
 
@@ -6,7 +5,7 @@ class Asset < ActiveRecord::Base
   belongs_to :player, polymorphic: true
   belongs_to :staff, polymorphic: true
 
-  validates_format_of :file_file_name, :with => %r{\.(x-png|pjpeg|jpeg|jpg|png|gif)$}i, :message => "Neatļauts formāts"
+  validates_format_of :file_file_name, :with => %r{\.(x-png|pjpeg|jpeg|jpg|png|gif)$}i
 
   has_attached_file :file, :styles => { :thumb => "140x130#", :large => "300x400#"}, :quality => 80
 
