@@ -27,7 +27,7 @@ gem 'haml'
 gem 'devise'
 gem 'paperclip'
 gem 'rmagick'
-gem 'ransack'
+
 gem 'kaminari'
 gem 'cancan'
 # To use ActiveModel has_secure_password
