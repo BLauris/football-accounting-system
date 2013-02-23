@@ -20,8 +20,8 @@
 				%td
 					- user.position
 				%td
-					= link_to "Delete", admin_staff_path(@staff), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+					= link_to "Delete", admin_staff_path(user), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
 					|
-					= link_to "Edit", edit_admin_staff_path(@staff), :class => "btn btn-primary btn-mini"
+					= link_to "Edit", edit_admin_staff_path(user), :class => "btn btn-primary btn-mini"
 					|
-					=link_to "Show", admin_staff_path(@staff), :class => "btn btn-primary btn-mini"
+					=link_to "Show", admin_staff_path(user), :class => "btn btn-primary btn-mini"
