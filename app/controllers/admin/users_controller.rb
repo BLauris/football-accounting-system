@@ -8,9 +8,6 @@ class Admin::UsersController < Admin::AdministratorController
 
   def show
     @user = User.find(params[:id])
-    # @coach = User.coach.find(params[:id])
-    # @staff = @user.staffs
-    # @player = @user.players
   end
 
 end

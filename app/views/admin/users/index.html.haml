@@ -15,10 +15,6 @@
         %td
           = user.team_name
         %td
-          = link_to "Delete", admin_user_path(user), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
-          |
-          = link_to "Edit", edit_admin_user_path(user), :class => "btn btn-primary btn-mini"
-          |
           =link_to "Show", admin_user_path(user), :class => "btn btn-primary btn-mini"
 
 / - content_for :sidebar do
