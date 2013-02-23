@@ -32,13 +32,66 @@
 					=link_to "Show", admin_coach_path(@coach), :class => "btn btn-primary btn-mini"
 %hr
 
--if @user.players.present?
-	= render :partial => "admin/players/player"
+%h4
+	Team players
+%table.table.table-hover
+	%thead
+		%tr
+			%th Picture
+			%th Full name
+			%th Heigt
+			%th Weight
+			%th Position
+			%th
+	%tbody
+		- for user in @user.players
+			%tr
+				%td
+					= image_tag(user.first_image_url)
+				%td
+					= user.full_name
+				%td
+					= user.height
+				%td
+					= user.weight
+				%td
+					- user.position
+				%td
+					= link_to "Delete", admin_player_path(@player), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+					|
+					= link_to "Edit", edit_admin_player_path(@player), :class => "btn btn-primary btn-mini"
+					|
+					= link_to "Show", admin_player_path(@player), :class => "btn btn-primary btn-mini"
 
 %hr
 
--if @user.staffs.present?
-	= render :partial => "admin/staffs/staff"
+%h4
+	Team medical & adviser staff list
+%table.table.table-hover
+	%thead
+		%tr
+			%th Picture
+			%th Name
+			%th Surname
+			%th Position
+			%th
+	%tbody
+		- for user in @user.staffs
+			%tr
+				%td
+					= image_tag(user.first_image_url)
+				%td
+					= user.name
+				%td
+					= user.surname
+				%td
+					- user.position
+				%td
+					= link_to "Delete", admin_staff_path(@staff), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+					|
+					= link_to "Edit", edit_admin_staff_path(@staff), :class => "btn btn-primary btn-mini"
+					|
+					=link_to "Show", admin_staff_path(@staff), :class => "btn btn-primary btn-mini"
 
 - content_for :sidebar do
 	= link_to('<i class="icon-trash"></i>  Delete team'.html_safe, admin_user_path(@user), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger") 
