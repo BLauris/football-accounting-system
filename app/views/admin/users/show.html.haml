@@ -3,9 +3,33 @@
 
 %hr
 
--if @user.coaches.present?
-	= render :partial => "admin/coaches/coach"
-
+%h4
+	Coaching staff
+%table.table.table-hover
+	%thead
+		%tr
+			%th Picture
+			%th Name
+			%th Surname
+			%th Position
+			%th
+	%tbody
+		- for user in @user.coaches
+			%tr
+				%td
+					= image_tag(user.first_image_url)
+				%td
+					= user.name
+				%td
+					= user.surname
+				%td
+					= user.position
+				%td
+					= link_to "Delete", admin_coach_path(@coach), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-mini"
+					|
+					= link_to "Edit", edit_admin_coach_path(@coach), :class => "btn btn-primary btn-mini"
+					|
+					=link_to "Show", admin_coach_path(@coach), :class => "btn btn-primary btn-mini"
 %hr
 
 -if @user.players.present?
